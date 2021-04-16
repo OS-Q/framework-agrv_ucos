@@ -22,8 +22,10 @@ __vm/
 Grbl_Esp32.ino.cpp
 /packages
 *.rst
+*.md
+*.yml
 README*
 LICENSE*
 *.png
 *.jpg
-docs/
+doc/
