@@ -12,6 +12,9 @@ install:
   - pip install -U platformio
 
 script:
+  - chmod +x  ./configure-features.py
+  - chmod +x  ./build-machine.py
+  - chmod +x  ./build-all.py
   - ./configure-features.py -e WIFI -d BLUETOOTH -v
   - ./build-machine.py test_drive.h
   - ./configure-features.py -e BLUETOOTH -d WIFI -v

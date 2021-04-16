@@ -1,0 +1,70 @@
+name: PIO
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+env:
+  UPLOAD_BUILD: true
+
+jobs:
+  PIO:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [3.7]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U https://github.com/platformio/platformio/archive/develop.zip
+          pio platform install espressif32
+
+      - name: PIO Build
+        run: |
+          pio run -d .
+
+  QIO:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: [3.7]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: "recursive"
+          fetch-depth: 1
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U https://github.com/OS-Q/S03/archive/master.zip
+          pio platform install https://github.com/OS-Q/P52/releases/latest/download/P52.zip
+
+      - name: QIO Build
+        run: |
+          pio run -d .
