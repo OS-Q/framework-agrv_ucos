@@ -21,3 +21,8 @@ __vm/
 *.suo
 Grbl_Esp32.ino.cpp
 /packages
+*.rst
+README*
+LICENSE*
+*.png
+*.jpg

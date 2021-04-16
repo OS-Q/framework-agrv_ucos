@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: python
 
 os:
@@ -19,7 +19,7 @@ script:
   - ./configure-features.py -e BLUETOOTH WIFI -v
   - ./build-all.py
 
-notifications:
-  email:
-    on_success: change
-    on_failure: change
+# notifications:
+#   email:
+#     on_success: change
+#     on_failure: change
