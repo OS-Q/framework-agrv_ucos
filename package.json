@@ -1,0 +1,17 @@
+{
+  "name": "framework-agrv_ucos",
+  "version": "1.0.0",
+  "description": "A free realtime uC-OS suite, customized for AgRV devices",
+  "keywords": [
+    "framework",
+    "realtime",
+    "os",
+    "rtos",
+    "ucos",
+    "uCOS",
+    "uC-OS",
+    "risc-v",
+    "agrv",
+    "agm"
+  ]
+}
